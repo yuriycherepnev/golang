@@ -19,7 +19,7 @@ func IsPrime(num int) bool {
 	// Проверяем делимость от 2 до sqrt(n)
 	for i := 2; i <= int(math.Sqrt(float64(num))); i++ {
 		if num%i == 0 {
-			return false // Если делится на i, число составное
+			return false // Если делится на i без остатка, число составное
 		}
 	}
 
