@@ -5,46 +5,55 @@ import "fmt"
 func snail(matrix [][]int) [][]int {
 	height := len(matrix)
 	width := len(matrix[0])
-	x := 0
-	y := 0
-	i := 1
 
-	stepCount := len(matrix) * len(matrix[0])
-
-	for i < step {
-
-		if step < width {
-			y = 0
-			x = i
+	level := 1
+	stepCount := width * height
+	levelSize := ((height + width) * 2) - 4
+	fmt.Println("level: ", level)
+	for i := 1; i <= stepCount; i++ {
+		fmt.Println("step: ", i)
+		levelSize--
+		if levelSize == 0 && i != stepCount {
+			height -= 2
+			width -= 2
+			levelSize = ((height + width) * 2) - 4
+			level++
+			fmt.Println("level: ", level)
 		}
-
-		i++
 	}
 
 	return matrix
 }
 
-func coordinateCalc(step int, height int, width int) (int, int) {
-	x := 0
-	y := 0
-
-	if step < width {
-		y = 0
-		x = step
-	}
-	if step > width
-
-	return x, y
-}
-
 func main() {
 
-	array := [][]int{
+	array1 := [][]int{
 		{1, 2, 3},
-		{4, 5, 6},
-		{7, 8, 9},
+		{1, 2, 3},
+		{1, 2, 3},
 	}
 
-	result := snail(array)
-	fmt.Println(result)
+	array2 := [][]int{
+		{1, 2, 3, 2, 3},
+		{1, 2, 3, 2, 3},
+		{1, 2, 3, 2, 3},
+		{1, 2, 3, 2, 3},
+		{1, 2, 3, 2, 3},
+		{1, 2, 3, 2, 3},
+	}
+
+	array3 := [][]int{
+		{1, 2, 3, 2},
+		{1, 2, 3, 2},
+		{1, 2, 3, 2},
+	}
+
+	result1 := snail(array1)
+	fmt.Println(result1)
+
+	result2 := snail(array2)
+	fmt.Println(result2)
+
+	result3 := snail(array3)
+	fmt.Println(result3)
 }
