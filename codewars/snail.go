@@ -1,9 +1,16 @@
+/*
+Сортировка улитки
+Для заданного n x n массива вернуть элементы массива,
+упорядоченные от самых внешних элементов к среднему элементу,
+по часовой стрелке.
+*/
+
 package main
 
 import "fmt"
 
-func snail(snaipMap [][]int) []int {
-	height, width := len(snaipMap), len(snaipMap[0])
+func Snail(snailMatrix [][]int) []int {
+	height, width := len(snailMatrix), len(snailMatrix[0])
 	stepCount := width * height
 	numbers := make([]int, 0, stepCount)
 
@@ -15,7 +22,7 @@ func snail(snaipMap [][]int) []int {
 		}
 
 		x, y := calculateCoordinates(level, levelStep, height, width)
-		numbers = append(numbers, snaipMap[y][x])
+		numbers = append(numbers, snailMatrix[y][x])
 		levelStep++
 
 		if levelStep == (2*(height+width) - 4) {
@@ -77,15 +84,15 @@ func main() {
 		{10, 9, 8, 7, 6},
 	}
 
-	result1 := snail(array1)
+	result1 := Snail(array1)
 	fmt.Println(result1)
 
-	result2 := snail(array2)
+	result2 := Snail(array2)
 	fmt.Println(result2)
 
-	result3 := snail(array3)
+	result3 := Snail(array3)
 	fmt.Println(result3)
 
-	result4 := snail(array4)
+	result4 := Snail(array4)
 	fmt.Println(result4)
 }
