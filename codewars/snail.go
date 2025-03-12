@@ -30,17 +30,26 @@ func calculateCoordinates(level int, levelStep int, height int, width int) (int,
 	y := 1
 	sideLength := (width + height) - 1
 
-	if levelStep > sideLength {
-		y = height
-		x = width
-		levelStep = levelStep - sideLength
-
+	if levelStep < sideLength {
 		if levelStep > width-1 {
-			y = y - (levelStep - (width - 1))
+			x = width
+			y = y + (levelStep - width)
 		} else {
-			x = x - levelStep
+			x = levelStep
 		}
 	}
+
+	//if levelStep > sideLength {
+	//	y = height
+	//	x = width
+	//	levelStep = levelStep - sideLength
+	//
+	//	if levelStep > width-1 {
+	//		y = y - (levelStep - (width - 1))
+	//	} else {
+	//		x = x - levelStep
+	//	}
+	//}
 
 	return x, y
 }
