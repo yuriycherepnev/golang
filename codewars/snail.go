@@ -2,85 +2,90 @@ package main
 
 import "fmt"
 
-func snail(matrix [][]int) [][]int {
-	height := len(matrix)
-	width := len(matrix[0])
-
-	level := 1
+func snail(snaipMap [][]int) []int {
+	height, width := len(snaipMap), len(snaipMap[0])
 	stepCount := width * height
-	levelSize := ((height + width) * 2) - 4
-	levelStep := 1
+	numbers := make([]int, 0, stepCount)
 
-	for i := 1; i <= stepCount; i++ {
-		x, y := calculateCoordinates(level-1, levelStep, height, width)
-		fmt.Println(x, y)
+	level, levelStep := 0, 0
+
+	for len(numbers) < stepCount {
+		if height <= 0 || width <= 0 {
+			break
+		}
+
+		x, y := calculateCoordinates(level, levelStep, height, width)
+		numbers = append(numbers, snaipMap[y][x])
 		levelStep++
-		levelSize--
-		if levelSize == 0 && i != stepCount {
+
+		if levelStep == (2*(height+width) - 4) {
+			level++
+			levelStep = 0
 			height -= 2
 			width -= 2
-			levelSize = ((height + width) * 2) - 4
-			level++
-			levelStep = 1
 		}
 	}
 
-	return matrix
+	return numbers
 }
 
-func calculateCoordinates(levelIncrease int, levelStep int, height int, width int) (int, int) {
-	x := 1
-	y := 1
-	sideLength := (width + height) - 1
-	if levelStep < sideLength {
-		if levelStep > width-1 {
-			x = width
-			y = y + (levelStep - width)
-		} else {
-			x = levelStep
-		}
-	} else {
-		y = height
-		levelStep = levelStep - sideLength
-		if levelStep > width-1 {
-			y = y - (levelStep - (width - 1))
-		} else {
-			x = width - levelStep
-		}
+func calculateCoordinates(level, step, height, width int) (int, int) {
+	x, y := level, level
+	maxX, maxY := width+level-1, height+level-1
+
+	switch {
+	case step < maxX-level:
+		x += step
+	case step < (maxX-level)+(maxY-level):
+		x = maxX
+		y += step - (maxX - level)
+	case step < (maxX-level)*2+(maxY-level):
+		x = maxX - (step - (maxX - level) - (maxY - level))
+		y = maxY
+	default:
+		y = maxY - (step - (2*(maxX-level) + (maxY - level)))
 	}
 
-	return x + levelIncrease, y + levelIncrease
+	return x, y
 }
 
 func main() {
-	//array1 := [][]int{
-	//	{1, 2, 3, 5},
-	//	{1, 2, 3, 5},
-	//	{1, 2, 3, 5},
-	//	{1, 2, 3, 5},
-	//}
-
 	array1 := [][]int{
-		{1, 2, 3, 2, 3},
-		{1, 2, 3, 2, 3},
-		{1, 2, 3, 2, 3},
-		{1, 2, 3, 2, 3},
-		{1, 2, 3, 2, 3},
-		{1, 2, 3, 2, 3},
+		{1, 1, 1, 1},
+		{4, 5, 5, 2},
+		{4, 6, 6, 2},
+		{3, 3, 3, 2},
 	}
 
-	//array3 := [][]int{
-	//	{1, 2, 3, 2},
-	//	{1, 2, 3, 2},
-	//	{1, 2, 3, 2},
-	//}
+	array2 := [][]int{
+		{1, 2, 3, 4, 5},
+		{18, 19, 20, 21, 6},
+		{17, 28, 29, 22, 7},
+		{16, 27, 30, 23, 8},
+		{15, 26, 25, 24, 9},
+		{14, 13, 12, 11, 10},
+	}
+
+	array3 := [][]int{
+		{1, 2, 3, 4},
+		{10, 11, 12, 5},
+		{9, 8, 7, 6},
+	}
+
+	array4 := [][]int{
+		{1, 2, 3, 4, 5},
+		{10, 9, 8, 7, 6},
+	}
 
 	result1 := snail(array1)
 	fmt.Println(result1)
 
-	//result2 := snail(array2)
-	//fmt.Println(result2)
-	//
-	//result3 := snail(array3)
-	//fmt.Println(result3)
+	result2 := snail(array2)
+	fmt.Println(result2)
+
+	result3 := snail(array3)
+	fmt.Println(result3)
+
+	result4 := snail(array4)
+	fmt.Println(result4)
 }
