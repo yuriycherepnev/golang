@@ -28,20 +28,17 @@ func snail(matrix [][]int) [][]int {
 func calculateCoordinates(level int, levelStep int, height int, width int) (int, int) {
 	x := 1
 	y := 1
+	sideLength := (width + height) - 1
 
-	if levelStep > (height + width) {
-		if width > levelStep-(height+width) {
-			y = height - (levelStep - (height + width))
+	if levelStep > sideLength {
+		y = height
+		x = width
+		levelStep = levelStep - sideLength
+
+		if levelStep > width-1 {
+			y = y - (levelStep - (width - 1))
 		} else {
-			y = height
-			x = width - (levelStep - (height + width))
-		}
-	} else {
-		if width > levelStep {
-			x = width
-			y = levelStep - height
-		} else {
-			x = levelStep
+			x = x - levelStep
 		}
 	}
 
