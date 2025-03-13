@@ -10,33 +10,32 @@ package main
 import "fmt"
 
 func Snail(snailMatrix [][]int) []int {
-	height, width := len(snailMatrix), len(snailMatrix[0])
+	width, height := len(snailMatrix[0]), len(snailMatrix)
 	stepCount := width * height
-	numbers := make([]int, 0, stepCount)
-
+	snailNumbers := make([]int, 0, stepCount)
 	level, levelStep := 0, 0
 
-	for len(numbers) < stepCount {
-		if height <= 0 || width <= 0 {
+	for len(snailNumbers) < stepCount {
+		if width <= 0 || height <= 0 {
 			break
 		}
 
-		x, y := calculateCoordinates(level, levelStep, height, width)
-		numbers = append(numbers, snailMatrix[y][x])
+		x, y := calculateCoordinates(level, levelStep, width, height)
+		snailNumbers = append(snailNumbers, snailMatrix[y][x])
 		levelStep++
 
-		if levelStep == (2*(height+width) - 4) {
+		if levelStep == (2*(width+height) - 4) {
 			level++
 			levelStep = 0
-			height -= 2
 			width -= 2
+			height -= 2
 		}
 	}
 
-	return numbers
+	return snailNumbers
 }
 
-func calculateCoordinates(level, step, height, width int) (int, int) {
+func calculateCoordinates(level, step, width, height int) (int, int) {
 	x, y := level, level
 	maxX, maxY := width+level-1, height+level-1
 
@@ -58,10 +57,10 @@ func calculateCoordinates(level, step, height, width int) (int, int) {
 
 func main() {
 	array1 := [][]int{
-		{1, 1, 1, 1},
-		{4, 5, 5, 2},
-		{4, 6, 6, 2},
-		{3, 3, 3, 2},
+		{1, 2, 3, 4},
+		{12, 13, 14, 5},
+		{11, 16, 15, 6},
+		{10, 9, 8, 7},
 	}
 
 	array2 := [][]int{
