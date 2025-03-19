@@ -67,18 +67,23 @@ func snail(snaipMap [][]int) []int {
 		}
 		moves -= 1 & dx
 		dx, dy = -dy, dx
-		fmt.Println(moves)
 	}
 
 	return result
 }
 
 func main() {
-	array1 := [][]int{
-		{1, 2, 3, 4},
-		{12, 13, 14, 5},
-		{11, 16, 15, 6},
-		{10, 9, 8, 7},
+	//array1 := [][]int{
+	//	{1, 2, 3, 4},
+	//	{12, 13, 14, 5},
+	//	{11, 16, 15, 6},
+	//	{10, 9, 8, 7},
+	//}
+
+	array2 := [][]int{
+		{1, 2, 3},
+		{8, 9, 4},
+		{7, 6, 5},
 	}
 
 	//array2 := [][]int{
@@ -96,7 +101,7 @@ func main() {
 	//	{1, 2, 3, 2},
 	//}
 
-	result1 := snail(array1)
+	result1 := snail(array2)
 	fmt.Println(result1)
 
 	//result2 := snail(array2)
