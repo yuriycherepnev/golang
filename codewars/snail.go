@@ -115,11 +115,18 @@ func snail(snaipMap [][]int) []int {
 	x, y := -1, 0
 
 	for ; lines > 0; lines-- {
+		fmt.Println("line:", lines)
+		fmt.Println("moves:", moves)
+		fmt.Println("dx:", dx, "/ dy:", dy)
+
 		for range make([]int, moves) {
-			x += dx
-			y += dy
+			x += dx //1
+			y += dy //0
 			result = append(result, snaipMap[y][x])
+			fmt.Println("x:", x, "/ y:", y)
 		}
+
+		fmt.Println("------------------------------------")
 		moves -= 1 & dx
 		dx, dy = -dy, dx
 	}
