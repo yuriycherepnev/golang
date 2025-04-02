@@ -3,14 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	dx := 1
-	moves := 0
-
-	moves -= 1 & dx
-	fmt.Println(1 & dx)
-	dx = 0
-	moves -= 1 & dx
+	dy := 1
+	dx := -1
 
 	fmt.Println(1 & dx)
-	fmt.Println(1 & -1)
+	fmt.Println(dy - dx)
 }
