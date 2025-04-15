@@ -10,13 +10,18 @@ import "fmt"
 
 func SnailTwo(snailMatrix [][]int) []int {
 	width, height := len(snailMatrix[0]), len(snailMatrix) //ширина высота матрицы
-	stepCount := width * height                            //кол-во шагов всей матрицы
-	step := 0                                              //текущий уровень, количество шагов на уровне
-	dx, dy := 1, 0                                         //траектория движения
-	x, y := -1, 0                                          //начальная точка
+	edges := [2]int{width + 1, height}
+
+	stepCount := width * height //кол-во шагов всей матрицы
+	step := 0                   //текущий уровень, количество шагов на уровне
+	dx, dy := 1, 0              //траектория движения
+	x, y := -1, 0               //начальная точка
 	snailNumbers := make([]int, 0, stepCount)
-	
+
+	movingLine := 0
+
 	for len(snailNumbers) < stepCount {
+		
 		x += dx
 		y += dy
 		snailNumbers = append(snailNumbers, snailMatrix[y][x])

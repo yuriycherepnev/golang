@@ -1,44 +1,27 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
-type Vehicle interface {
-	move()
+func fibonacci(n int) int {
+	if n == 0 {
+		return 0
+	} else if n == 1 {
+		return 1
+	} else {
+		return fibonacci(n-1) + fibonacci(n-2)
+	}
 }
-
-func drive(vehicle Vehicle) {
-	vehicle.move()
-}
-
-type Car struct{}
-type Aircraft struct{}
-
-func (c Car) move() {
-	fmt.Println("Автомобиль едет")
-}
-func (a Aircraft) move() {
-	fmt.Println("Самолет летит")
-}
-
-func NewCar() *Car {
-	return &Car{}
-}
-
-func Add(src []int) {
-	src = append(src, 1)
-}
-
 func main() {
-	arr := []int{1, 2, 3}
-	src := make([]int, 1)
-	copy(src, arr)
-
-	Add(src)
-	fmt.Println(arr) // 1 2 3
-	fmt.Println(src) // 1 1
-
-	tesla := NewCar()
-	boing := Aircraft{}
-	drive(tesla)
-	drive(boing)
+	start := time.Now()
+	const number = 20
+	fibNumbers := make([]int, 0, 20)
+	for i := 0; i <= number; i++ {
+		fibNumbers = append(fibNumbers, fibonacci(i))
+	}
+	fmt.Println(fibNumbers)
+	duration := time.Since(start).Seconds()
+	fmt.Println(duration)
 }
