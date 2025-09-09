@@ -1,17 +1,14 @@
 package main
 
-import "fmt"
-
 func main() {
-	NoSpace("a1sss aaa")
+	NoSpace("ass aaa")
 }
 
-func NoSpace(str string) {
-	runes := make([]rune, 0, len(str))
-	for index, char := range str {
-
-		fmt.Println(index)
-		fmt.Println(char)
+func NoSpace(word string) (result string) {
+	for _, char := range word {
+		if char != ' ' {
+			result += string(char)
+		}
 	}
-	fmt.Println(string(runes))
+	return result
 }
