@@ -8,6 +8,19 @@ func main() {
 	fmt.Println(count)
 }
 
+func Digitize(number int) (slice []int) {
+	for {
+		slice = append(slice, number%10)
+		number /= 10
+		if number == 0 {
+			return slice
+		}
+	}
+}
+
+/**
+TODO первое решение с вычислением длины числа:
+
 func numberLength(number int) (count int) {
 	for number != 0 {
 		number = number / 10
@@ -29,3 +42,5 @@ func Digitize(number int) []int {
 	}
 	return numberSlice
 }
+
+*/
