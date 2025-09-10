@@ -1,34 +1,31 @@
 package main
 
-import (
-	"fmt"
-	"unsafe"
-)
+import "fmt"
 
 func main() {
-	number := 7788554433
-	fmt.Println(unsafe.Sizeof(number))
 
-	//count := Digitize(789643)
-	//fmt.Println(count)
+	count := Digitize(5555)
+	fmt.Println(count)
 }
 
 func numberLength(number int) (count int) {
 	for number != 0 {
-		number /= 10
+		number = number / 10
 		count++
 	}
 	return count
 }
 
 func Digitize(number int) []int {
+	println(numberLength(number))
 	numberSlice := make([]int, 0, numberLength(number))
-
-	for number > 0 {
+	for {
 		digit := number % 10
 		number = number / 10
 		numberSlice = append(numberSlice, digit)
+		if number == 0 {
+			break
+		}
 	}
-
 	return numberSlice
 }
