@@ -19,20 +19,20 @@ package main
 import "fmt"
 
 func snail(snailMatrix [][]int) []int {
-	result := make([]int, 0, len(snailMatrix)*len(snailMatrix[0]))
-	lines := [2]int{len(snailMatrix[0]), len(snailMatrix) - 1}
-	dx, dy := 1, 0
-	x, y := -1, 0
-	toggle := 0
+	result := make([]int, 0, len(snailMatrix)*len(snailMatrix[0])) //количество клеток в матрице
+	lines := [2]int{len(snailMatrix[0]), len(snailMatrix) - 1}     //массив с длиной линий, которые постепенно уменьшаются
+	dx, dy := 1, 0                                                 //направление движения /1,0 = по x вправо /0,1 = по y вниз /-1,0 по x влево /0,-1 по у вверх
+	x, y := -1, 0                                                  //текущие координаты
+	currentLine := 0                                               //текущая линия / 0 - ось x / 1 - ось y
 
 	for len(result) < cap(result) {
-		for i := 0; i < lines[toggle]; i++ {
+		for i := 0; i < lines[currentLine]; i++ {
 			x += dx
 			y += dy
 			result = append(result, snailMatrix[y][x])
 		}
-		lines[toggle]--
-		toggle = toggle ^ 1
+		lines[currentLine]--
+		currentLine = currentLine ^ 1
 		dx, dy = -dy, dx
 	}
 
