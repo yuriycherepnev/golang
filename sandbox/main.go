@@ -2,14 +2,21 @@ package main
 
 import "fmt"
 
-func main() {
-	var age uint8 = 122
-	var name string = "Hugo Stiglic"
-	var isAlive bool = true
-	var coefficient float32 = 1.2
+type Status int
 
-	fmt.Println(age)
-	fmt.Println(name)
-	fmt.Println(isAlive)
-	fmt.Println(coefficient)
+const (
+	Pending   Status = iota // 0
+	Approved                // 1
+	Rejected                // 2
+	Cancelled               // 3
+)
+
+func (s Status) String() string {
+	return [...]string{"Pending", "Approved", "Rejected", "Cancelled"}[s]
+}
+
+func main() {
+	var status Status = Approved
+	fmt.Println(status)      // "Approved"
+	fmt.Println(int(status)) // 1
 }
