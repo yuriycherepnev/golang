@@ -1,29 +1,15 @@
 package main
 
-import (
-	"github.com/gofiber/fiber/v2"
-)
+import "fmt"
 
 func main() {
-	app := fiber.New()
+	var age uint8 = 122
+	var name string = "Hugo Stiglic"
+	var isAlive bool = true
+	var coefficient float32 = 1.2
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Привет, мир! 👋")
-	})
-
-	app.Get("/hello/:name", func(c *fiber.Ctx) error {
-		return c.SendString("Привет, " + c.Params("name") + "! 🎉")
-	})
-	
-	app.Post("/api", func(c *fiber.Ctx) error {
-		return c.JSON(fiber.Map{
-			"success": true,
-			"message": "API работает!",
-		})
-	})
-
-	err := app.Listen(":3000")
-	if err != nil {
-		return
-	}
+	fmt.Println(age)
+	fmt.Println(name)
+	fmt.Println(isAlive)
+	fmt.Println(coefficient)
 }
