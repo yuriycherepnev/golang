@@ -14,7 +14,7 @@ func CountSetBits(num int) int {
 		if num&1 == 1 {
 			count++
 		}
-		num >>= 1
+		num = num >> 1
 	}
 	return count
 }

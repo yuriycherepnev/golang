@@ -1,29 +1,24 @@
 package main
 
-import (
-	"github.com/gofiber/fiber/v2"
-)
+import "fmt"
 
 func main() {
-	app := fiber.New()
+	var a0 int = 0
+	var a1 int = 1
+	var a2 int = 2
+	var a3 int = 3
+	var a4 int = 90
+	var a5 int = 45
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Привет, мир! 👋")
-	})
+	var b int = a4 ^ a5 // 110 & 010 = 10  - 2
 
-	app.Get("/hello/:name", func(c *fiber.Ctx) error {
-		return c.SendString("Привет, " + c.Params("name") + "! 🎉")
-	})
-	
-	app.Post("/api", func(c *fiber.Ctx) error {
-		return c.JSON(fiber.Map{
-			"success": true,
-			"message": "API работает!",
-		})
-	})
+	fmt.Printf("%b\n", a0)
+	fmt.Printf("%b\n", a1)
+	fmt.Printf("%b\n", a2)
+	fmt.Printf("%b\n", a3)
+	fmt.Printf("%b\n", a4)
+	fmt.Printf("%b\n", a5)
 
-	err := app.Listen(":3000")
-	if err != nil {
-		return
-	}
+	fmt.Printf("%b\n", b)
+	println(b)
 }
