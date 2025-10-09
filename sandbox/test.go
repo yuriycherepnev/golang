@@ -2,23 +2,28 @@ package main
 
 import "fmt"
 
-type Service struct {
-	var1 int
-	var2 int
-	ff   func()
+func main() {
+	array := []int{2, 4, 6, 8, 10}
+
+	result := findClosestElements(array, 3, 11)
+
+	fmt.Println(result)
 }
 
-func main() {
-	var service Service
-	service.var1 = 6745
-	service.var2 = 2
+func findClosestElements(arr []int, k int, x int) []int {
+	left := 0
+	right := len(arr) - k
 
-	service.ff = func() {
-		fmt.Println(111)
+	for left < right {
+		mid := left + (right-left)/2
+
+		// Сравниваем расстояния от x до arr[mid] и arr[mid+k]
+		if x-arr[mid] > arr[mid+k]-x {
+			left = mid + 1
+		} else {
+			right = mid
+		}
 	}
-	fmt.Println(service)
-	service.ff()
 
-	colors := [3]int{2: 3}
-	fmt.Println(colors) // blue
+	return arr[left : left+k]
 }
