@@ -6,8 +6,19 @@ func main() {
 	array := []int{2, 4, 6, 8, 10}
 
 	result := findClosestElements(array, 3, 11)
+	one := 1
+	two := 2
+
+	add(one, two)
+	add(one, two, one, two)
 
 	fmt.Println(result)
+}
+
+func add(numbers ...int) {
+	for _, number := range numbers {
+		fmt.Println(number)
+	}
 }
 
 func findClosestElements(arr []int, k int, x int) []int {
