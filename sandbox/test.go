@@ -3,16 +3,16 @@ package main
 import "fmt"
 
 func main() {
-	array := []int{1, 2, 3, 4, 5}
+	array := []int{2, 4, 6, 8, 10, 12, 14, 16, 18}
 
-	left, _ := binarySearch(array, 3)
+	left, _ := binarySearch(array, 100)
 
-	fmt.Println(left)
+	fmt.Println(array[left])
 }
 
 func binarySearch(arr []int, x int) (int, int) {
 	left := 0
-	right := len(arr) - 1
+	right := len(arr)
 
 	for left+1 != right {
 		mid := (left + right) / 2
@@ -24,7 +24,7 @@ func binarySearch(arr []int, x int) (int, int) {
 		}
 	}
 
-	return arr[left], arr[right]
+	return left, right
 }
 
 /**
