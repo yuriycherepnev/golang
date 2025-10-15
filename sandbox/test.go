@@ -6,6 +6,13 @@ func main() {
 	array := []int{2, 4, 6, 8, 10, 12, 14, 16, 18}
 
 	left, _ := binarySearch(array, 100)
+	k := 3
+	slice := make([]int, 0, k)
+
+	for k > 0 {
+		slice = append([]int{}, slice...)
+		k--
+	}
 
 	fmt.Println(array[left])
 }
