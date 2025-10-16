@@ -6,7 +6,10 @@ func main() {
 
 	var f func(int, int) int = func(x, y int) int { return x + y }
 
+	v := func(x, y int) int { return x * y }
+
 	fmt.Println(f(3, 4))
+	fmt.Println(v(3, 4))
 }
 
 /*
