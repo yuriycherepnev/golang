@@ -3,16 +3,23 @@ package main
 import "fmt"
 
 func main() {
-	array := []int{1, 2, 3, 4, 5}
+	array := []int{2, 4, 6, 8, 10, 12, 14, 16, 18}
+	mid, _ := binarySearch(array, 100)
+	k := 3
+	slice := make([]int, 0, k)
 
-	left, _ := binarySearch(array, 3)
+	for k > 0 {
+		slice = append([]int{}, slice...)
+		k--
+		
+	}
 
-	fmt.Println(left)
+	fmt.Println(array[mid])
 }
 
 func binarySearch(arr []int, x int) (int, int) {
 	left := 0
-	right := len(arr) - 1
+	right := len(arr)
 
 	for left+1 != right {
 		mid := (left + right) / 2
@@ -24,7 +31,7 @@ func binarySearch(arr []int, x int) (int, int) {
 		}
 	}
 
-	return arr[left], arr[right]
+	return left, right
 }
 
 /**
@@ -36,8 +43,19 @@ func main() {
 	array := []int{2, 4, 6, 8, 10}
 
 	result := findClosestElements(array, 3, 11)
+	one := 1
+	two := 2
+
+	add(one, two)
+	add(one, two, one, two)
 
 	fmt.Println(result)
+}
+
+func add(numbers ...int) {
+	for _, number := range numbers {
+		fmt.Println(number)
+	}
 }
 
 func findClosestElements(arr []int, k int, x int) []int {
