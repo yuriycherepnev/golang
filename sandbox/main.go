@@ -3,14 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	age, _ := add(4, 5, "Tom", "Simpson")
-	fmt.Println(age) // 9
-}
 
-func add(x, y int, firstName, lastName string) (z int, fullName string) {
-	z = x + y
-	fullName = firstName + " " + lastName
-	return
+	var f func(int, int) int = func(x, y int) int { return x + y }
+
+	v := func(x, y int) int { return x * y }
+
+	fmt.Println(f(3, 4))
+	fmt.Println(v(3, 4))
 }
 
 /*
