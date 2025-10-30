@@ -2,16 +2,19 @@ package main
 
 import "fmt"
 
+type BinaryOp func(int, int) int
+
+func action1(n1 int, n2 int, op BinaryOp) {
+	result := op(n1, n2)
+	fmt.Println(result)
+}
+
+func add1(x int, y int) int {
+	return x + y
+}
+
 func main() {
 
-	var a, b, d int = 1, 2, 4
-
-	p_nums := [4]*int{&a, &b, nil, &d} // массив из 4 указателей на значения типа int
-
-	for _, p := range p_nums {
-		// если указатель не равен nil, выводим значение, которое хранится по его адресу
-		if p != nil {
-			fmt.Println(*p)
-		}
-	}
+	var myOperation = add1
+	action1(10, 35, myOperation) // 45
 }
