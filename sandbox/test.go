@@ -2,19 +2,15 @@ package main
 
 import "fmt"
 
-type BinaryOp func(int, int) int
-
-func action1(n1 int, n2 int, op BinaryOp) {
-	result := op(n1, n2)
-	fmt.Println(result)
-}
-
-func add1(x int, y int) int {
-	return x + y
+type person struct {
+	name []int
+	age  int
 }
 
 func main() {
-
-	var myOperation = add1
-	action1(10, 35, myOperation) // 45
+	var tom person
+	tom.age = 66
+	tom.name = append(tom.name, 1)
+	fmt.Println(tom)
+	fmt.Println(tom.name)
 }
