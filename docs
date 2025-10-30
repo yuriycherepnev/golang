@@ -846,3 +846,6 @@ type name struct {
 
 Каждое поле имеет название и тип данных, как переменная.
 
+Инициализация:
+var tom person = person{"Tom", 23}
+var alice person = person{age: 23, name: "Alice"}
