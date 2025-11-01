@@ -849,3 +849,28 @@ type name struct {
 Инициализация:
 var tom person = person{"Tom", 23}
 var alice person = person{age: 23, name: "Alice"}
+
+------------------------------------------------------------
+Типы и интерфейсы:
+
+Типы определяют структуру данных и их поведение:
+
+// Конкретный тип
+type Person struct {
+    Name string
+    Age  int
+}
+
+// Псевдоним типа
+type Celsius float64
+
+// Метод для типа
+func (p Person) Greet() string {
+    return "Hello, " + p.Name
+}
+
+Интерфейсы определяют контракт - набор методов, которые должен реализовать тип:
+
+type Greeter interface {
+    Greet() string
+}
