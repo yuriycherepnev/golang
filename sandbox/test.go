@@ -8,9 +8,8 @@ type person struct { // вложенная структура person
 }
 
 type account struct {
-	login    string
-	password string
-
+	login      string
+	password   string
 	personInfo person
 }
 
