@@ -18,7 +18,7 @@ func (p person) eat(meal string) {
 
 func main() {
 
-	tom := person{name: "Tom", age: 24}
+	tom := person{name: "Tom", age: 36}
 	tom.print()
 	tom.eat("apples")
 }
