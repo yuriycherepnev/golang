@@ -7,15 +7,18 @@ type person struct {
 	age  int
 }
 
-type account struct {
-	login      string
-	password   string
-	personInfo person
+func (p person) print() {
+	fmt.Println("Name:", p.name)
+	fmt.Println("Age:", p.age)
+}
+
+func (p person) eat(meal string) {
+	fmt.Println(p.name, "eats", meal)
 }
 
 func main() {
-	tom := person{name: "Tom", age: 22}
-	var pAge *int = &tom.age
-	*pAge = 35
-	fmt.Println(tom.age)
+
+	tom := person{name: "Tom", age: 24}
+	tom.print()
+	tom.eat("apples")
 }
