@@ -14,14 +14,8 @@ type account struct {
 }
 
 func main() {
-	tom := account{
-		login:    "tom@hmail.com",
-		password: "12345678",
-		personInfo: person{
-			name: "Tom",
-			age:  41,
-		},
-	}
-	fmt.Println(tom)
-	fmt.Println("Name: ", tom.personInfo.name) // Name: Tom
+	tom := person{name: "Tom", age: 22}
+	var pAge *int = &tom.age
+	*pAge = 35
+	fmt.Println(tom.age)
 }

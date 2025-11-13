@@ -859,7 +859,6 @@ bob := person {name: "Bob", age: 31}
 
 undefined := person {}  // name - пустая строка, age - 0
 
-
 анонимные структуры:
 
 package main
@@ -869,8 +868,8 @@ var tom struct{
     name string
     age int
 }
-func main() {
- 
+
+func main() { 
     tom.name = "Tom"
     tom.age =  23
     fmt.Println(tom.name) // Tom
