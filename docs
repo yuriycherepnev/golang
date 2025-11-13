@@ -850,6 +850,33 @@ type name struct {
 var tom person = person{"Tom", 23}
 var alice person = person{age: 23, name: "Alice"}
 
+Другие способы инициализации:
+
+var tom = person {name: "Tom", age: 24}
+bob := person {name: "Bob", age: 31}
+
+Можно даже не указывать никаких значений, в этом случае свойства структуры получат значения по умолчанию:
+
+undefined := person {}  // name - пустая строка, age - 0
+
+
+анонимные структуры:
+
+package main
+import "fmt"
+ 
+var tom struct{
+    name string
+    age int
+}
+func main() {
+ 
+    tom.name = "Tom"
+    tom.age =  23
+    fmt.Println(tom.name) // Tom
+    fmt.Println(tom.age) // 23
+}
+
 ------------------------------------------------------------
 Типы и интерфейсы:
 

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-type person struct { // вложенная структура person
+type person struct {
 	name string
 	age  int
 }
