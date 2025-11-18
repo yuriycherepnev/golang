@@ -2,23 +2,11 @@ package main
 
 import "fmt"
 
-type person struct {
-	name string
-	age  int
-}
-
-func (p person) print() {
-	fmt.Println("Name:", p.name)
-	fmt.Println("Age:", p.age)
-}
-
-func (p person) eat(meal string) {
-	fmt.Println(p.name, "eats", meal)
-}
-
 func main() {
+	var users []int = make([]int, 3)
+	array := [3]int{1, 2, 3}
 
-	tom := person{name: "Tom", age: 36}
-	tom.print()
-	tom.eat("apples")
+	users = array[0:3]
+
+	fmt.Println(users)
 }
