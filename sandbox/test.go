@@ -1,13 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
-	users := []string{"Bob", "Alice", "Kate", "Sam", "Tom", "Paul", "Mike", "Robert"}
+	i := math.MaxInt64 - 100
+	j := math.MaxInt64
 
-	var n = 3
-	users = append(users[:n], users[n+1:]...)
+	dev := (i + j) / 2
+	dev2 := int(uint(i+j) >> 1)
 
-	fmt.Println(users[:n])
-	fmt.Println(users[n:])
+	fmt.Println(dev)
+	fmt.Println(dev2)
 }
