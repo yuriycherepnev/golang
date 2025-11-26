@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 func main() {
@@ -11,6 +12,8 @@ func main() {
 	fmt.Println(a * b) // 1
 
 	array := []int{2, 4, 6, 8, 1000, 1003, 1001, 1002, 2000}
+
+	sort.SearchInts(array, a)
 
 	i := Search(len(array), func(i int) bool {
 		return array[i] >= 2002
