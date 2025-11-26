@@ -9,7 +9,7 @@ func main() {
 	a := -10
 	b := -1
 
-	fmt.Println(a * b) // 1
+	fmt.Println(a * b)
 
 	array := []int{2, 4, 6, 8, 1000, 1003, 1001, 1002, 2000}
 
