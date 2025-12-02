@@ -1,12 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
-	var users []int = make([]int, 3)
-	array := [3]int{1, 2, 3}
+	i := math.MaxInt64 - 100
+	j := math.MaxInt64
 
-	users = array[0:3]
+	dev := (i + j) / 2
+	dev2 := int(uint(i+j) >> 1)
 
-	fmt.Println(users)
+	fmt.Println(dev)
+	fmt.Println(dev2)
 }
