@@ -8,7 +8,6 @@ func main() {
 	searchIndex := binarySearch(array, 11)
 
 	fmt.Println(array[searchIndex])
-
 }
 
 func comparison(a int, b int, x int) int {
