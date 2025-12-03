@@ -1,10 +1,32 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
-	array := []int{2, 4, 6, 8, 10, 1000, 1001, 1002, 2000}
-	fmt.Println(array)
+	array := []int{2, 4, 6, 8, 10, 1000, 1002, 1004, 2000}
+
+	searchIndex := binarySearch(array, 5000)
+	fmt.Println(array[searchIndex])
+
+	i := sort.SearchInts(array, 5000)
+	fmt.Println(array[i])
+}
+
+func findClosestElements(arr []int, k, x int) {
+	//closestIndex := binarySearch(arr, k)
+	//l, r := closestIndex-1, closestIndex
+	//
+	//for k != 0 {
+	//
+	//
+	//
+	//
+	//
+	//}
+
 }
 
 func comparison(a int, b int, x int) int {
@@ -24,4 +46,18 @@ func mod(number int) int {
 		return -number
 	}
 	return number
+}
+
+func binarySearch(arr []int, x int) int {
+	i, j := 0, len(arr)-1
+
+	for i < j {
+		midIndex := (i + j) >> 1
+		if arr[midIndex] >= x {
+			j = midIndex
+		} else {
+			i = midIndex + 1
+		}
+	}
+	return i
 }

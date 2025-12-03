@@ -6,42 +6,28 @@ import (
 )
 
 func main() {
-	a := -10
-	b := -1
+	array := []int{2, 4, 6, 8, 10, 1000, 1001, 1002, 2000}
 
-	fmt.Println(a * b)
+	slice := findClosestElements(array, 5, 1)
 
-	array := []int{2, 4, 6, 8, 1000, 1003, 1001, 1002, 2000}
-
-	sort.SearchInts(array, a)
-
-	i := Search(len(array), func(i int) bool {
-		return array[i] >= 2002
-	})
-
-	fmt.Println(i)
+	fmt.Println(slice)
 }
 
-func Search(n int, function func(int) bool) int {
-	i, j := 0, n
-	for i < j {
-		h := (i + j) >> 1
-		if !function(h) {
-			i = h + 1
+func findClosestElements(arr []int, k int, x int) []int {
+	n := len(arr)
+	i := sort.SearchInts(arr, x)
+
+	l, r := i-1, i
+
+	for k > 0 {
+		k--
+		if r == n || l >= 0 && (x-arr[l]) <= (arr[r]-x) {
+			fmt.Println(1)
+			l--
 		} else {
-			j = h
+			fmt.Println(2)
+			r++
 		}
 	}
-	return i
-}
-
-func comparison(a, b, x int) bool {
-	return module(a-x) < module(b-x) || module(a-x) == module(b-x) && a < b
-}
-
-func module(number int) int {
-	if number < 0 {
-		return number * -1
-	}
-	return number
+	return arr[l+1 : r]
 }
