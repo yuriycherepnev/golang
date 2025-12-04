@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	array := []int{2, 4, 6, 8, 10, 1000, 1001, 1002, 2000}
+	array := []int{1, 2, 3, 4, 5, 6, 7, 8}
 
-	slice := findClosestElements(array, 5, 1)
+	slice := findClosestElements(array, 5, 4)
 
 	fmt.Println(slice)
 }
@@ -18,16 +18,16 @@ func findClosestElements(arr []int, k int, x int) []int {
 	i := sort.SearchInts(arr, x)
 
 	l, r := i-1, i
-
 	for k > 0 {
 		k--
+		fmt.Println(l, r)
+		fmt.Println(r, " == ", n, " || ", l, " >= ", 0, " && (", x, "-", arr[l], ") <= (", arr[r], "-", x, ")")
 		if r == n || l >= 0 && (x-arr[l]) <= (arr[r]-x) {
-			fmt.Println(1)
 			l--
 		} else {
-			fmt.Println(2)
 			r++
 		}
+		fmt.Println(l, r)
 	}
 	return arr[l+1 : r]
 }

@@ -2,43 +2,40 @@ package main
 
 import (
 	"fmt"
-	"sort"
 )
 
 func main() {
 	array := []int{2, 4, 6, 8, 10, 1000, 1002, 1004, 2000}
 
-	searchIndex := binarySearch(array, 5000)
-	fmt.Println(array[searchIndex])
-
-	i := sort.SearchInts(array, 5000)
-	fmt.Println(array[i])
+	i, j := findClosestElements(array, 5, 1)
+	fmt.Println(array[i], array[j])
 }
 
-func findClosestElements(arr []int, k, x int) {
-	//closestIndex := binarySearch(arr, k)
-	//l, r := closestIndex-1, closestIndex
-	//
-	//for k != 0 {
-	//
-	//
-	//
-	//
-	//
-	//}
+func findClosestElements(arr []int, k, x int) (int, int) {
+	i, j := binarySearch(arr, x)
 
+	for k > 0 {
+		k--
+		if i > 0 || j < len(arr)-1 && comparison(arr[i], arr[j], x) {
+			i--
+		} else {
+			j++
+		}
+	}
+
+	return i, j
 }
 
-func comparison(a int, b int, x int) int {
+func comparison(a int, b int, x int) bool {
 	aMod := mod(a - x)
 	bMod := mod(b - x)
 	if aMod < bMod {
-		return a
+		return true
 	}
 	if aMod == bMod && a < b {
-		return a
+		return true
 	}
-	return b
+	return false
 }
 
 func mod(number int) int {
@@ -48,16 +45,16 @@ func mod(number int) int {
 	return number
 }
 
-func binarySearch(arr []int, x int) int {
-	i, j := 0, len(arr)-1
+func binarySearch(arr []int, x int) (i, j int) {
+	i, j = 0, len(arr)-1
 
-	for i < j {
+	for i+1 < j {
 		midIndex := (i + j) >> 1
 		if arr[midIndex] >= x {
 			j = midIndex
 		} else {
-			i = midIndex + 1
+			i = midIndex
 		}
 	}
-	return i
+	return
 }
