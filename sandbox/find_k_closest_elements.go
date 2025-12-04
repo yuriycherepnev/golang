@@ -45,7 +45,22 @@ func mod(number int) int {
 	return number
 }
 
-func binarySearch(arr []int, x int) (i, j int) {
+func binarySearch(arr []int, x int) int {
+	i, j := 0, len(arr)-1
+
+	for i < j {
+		midIndex := (i + j) >> 1
+		if arr[midIndex] >= x {
+			j = midIndex
+		} else {
+			i = midIndex + 1
+		}
+	}
+
+	return i
+}
+
+func DoubleBinarySearch(arr []int, x int) (i, j int) {
 	i, j = 0, len(arr)-1
 
 	for i+1 < j {
