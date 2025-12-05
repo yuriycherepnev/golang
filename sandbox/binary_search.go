@@ -5,10 +5,7 @@ import "fmt"
 func main() {
 	array := []int{2, 4, 6, 8, 10, 1000, 1001, 1002, 2000}
 
-	//l, r := DoubleDownBinarySearch(array, 1000)
-	//fmt.Println(array[l], array[r])
-
-	index := DownBinarySearch(array, 1000)
+	index := DownBinarySearch(array, 2001)
 	fmt.Println(array[index])
 }
 
@@ -29,7 +26,7 @@ func DownBinarySearch(arr []int, x int) int {
 	i, j := 0, len(arr)
 	for i+1 < j {
 		midIndex := int(uint(i+j)) >> 1
-		if arr[midIndex] >= x {
+		if arr[midIndex] > x {
 			j = midIndex
 		} else {
 			i = midIndex
