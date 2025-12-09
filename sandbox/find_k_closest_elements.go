@@ -7,16 +7,17 @@ import (
 func main() {
 	array := []int{2, 4, 6, 8, 10, 1000, 1002, 1004, 2000}
 
-	i := FindClosestElements(array, 5, 6000)
+	i := FindClosestElements(array, 3, 11)
 	fmt.Println(i)
 }
 
 func FindClosestElements(arr []int, k int, x int) []int {
 	l, r := findBinarySearch(arr, x)
+	n := len(arr)
+
 	for k > 0 {
 		k--
-
-		if l != 0  || {
+		if l != 0 || r == n && module(l-x) <= module(r-x) {
 			l--
 		} else {
 			r++
