@@ -2,16 +2,22 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 func main() {
-	i := math.MaxInt64 - 100
-	j := math.MaxInt64
 
-	dev := (i + j) / 2
-	dev2 := int(uint(i+j) >> 1)
+	x := 1200
+	l := 500
+	r := 1501
 
-	fmt.Println(dev)
-	fmt.Println(dev2)
+	fmt.Println(x-l, x-r)
+
+	fmt.Println(module(l-x) <= module(r-x))
+}
+
+func module(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
 }

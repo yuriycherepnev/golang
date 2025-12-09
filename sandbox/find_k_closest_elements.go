@@ -15,7 +15,8 @@ func FindClosestElements(arr []int, k int, x int) []int {
 	l, r := findBinarySearch(arr, x)
 	for k > 0 {
 		k--
-		if l != 0 {
+
+		if l != 0  || {
 			l--
 		} else {
 			r++
@@ -24,11 +25,11 @@ func FindClosestElements(arr []int, k int, x int) []int {
 	return arr[l : r+1]
 }
 
-func module(n int) int {
-	if n < 0 {
-		return -n
+func module(x int) int {
+	if x < 0 {
+		return -x
 	}
-	return n
+	return x
 }
 
 func findBinarySearch(arr []int, x int) (int, int) {
