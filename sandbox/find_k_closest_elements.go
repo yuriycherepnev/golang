@@ -7,23 +7,25 @@ import (
 func main() {
 	array := []int{2, 4, 6, 8, 10, 1000, 1002, 1004, 2000}
 
-	i := FindClosestElements(array, 3, 11)
+	i := FindClosestElements(array, 3, 0)
 	fmt.Println(i)
 }
 
 func FindClosestElements(arr []int, k int, x int) []int {
-	l, r := findBinarySearch(arr, x)
+	i := closestBinarySearch(arr, x)
 	n := len(arr)
+
+	l, r := i, i+1
 
 	for k > 0 {
 		k--
-		if l != 0 || r == n && module(l-x) <= module(r-x) {
+		if r == n || l >= 0 && module(arr[l]-x) <= module(arr[r]-x) {
 			l--
 		} else {
 			r++
 		}
 	}
-	return arr[l : r+1]
+	return arr[l+1 : r]
 }
 
 func module(x int) int {
@@ -33,7 +35,7 @@ func module(x int) int {
 	return x
 }
 
-func findBinarySearch(arr []int, x int) (int, int) {
+func closestBinarySearch(arr []int, x int) int {
 	i, j := 0, len(arr)-1
 	for i+1 < j {
 		midIndex := int(uint(i+j)) >> 1
@@ -43,5 +45,9 @@ func findBinarySearch(arr []int, x int) (int, int) {
 			i = midIndex
 		}
 	}
-	return i, j
+	if module(arr[i]-x) <= module(arr[j]-x) {
+		return i
+	} else {
+		return j
+	}
 }

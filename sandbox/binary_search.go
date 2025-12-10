@@ -8,7 +8,7 @@ func main() {
 	i, j := DoubleBinarySearch(array, 1002)
 	fmt.Println(array[i], array[j])
 
-	k := DownBinarySearch(array, 2002)
+	k := ClosestBinarySearch(array, 2002)
 	fmt.Println(array[k])
 }
 
@@ -49,4 +49,29 @@ func DoubleBinarySearch(arr []int, x int) (int, int) {
 		}
 	}
 	return i, j
+}
+
+func ClosestBinarySearch(arr []int, x int) int {
+	i, j := 0, len(arr)-1
+	for i+1 < j {
+		midIndex := int(uint(i+j)) >> 1
+		if arr[midIndex] > x {
+			i = midIndex
+		} else {
+			j = midIndex
+		}
+	}
+	if Module(arr[i]-x) <= Module(arr[j]-x) {
+		return i
+	} else {
+		return j
+	}
+}
+
+func Module(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+
 }
