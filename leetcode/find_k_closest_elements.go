@@ -7,11 +7,11 @@ import (
 func main() {
 	array := []int{2, 4, 6, 8, 10, 1000, 1002, 1004, 2000}
 
-	i := FindClosestElements(array, 3, 0)
+	i := findClosestElements(array, 3, 0)
 	fmt.Println(i)
 }
 
-func FindClosestElements(arr []int, k int, x int) []int {
+func findClosestElements(arr []int, k int, x int) []int {
 	i := closestBinarySearch(arr, x)
 	n := len(arr)
 
