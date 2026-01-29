@@ -1,18 +1,17 @@
-package main
+//package main
+//
+//import "fmt"
+//
+//func main() {
+//
+//	var f func(int, int) int = func(x, y int) int { return x + y }
+//
+//	v := func(x, y int) int { return x * y }
+//
+//	fmt.Println(f(3, 4))
+//	fmt.Println(v(3, 4))
+//}
 
-import "fmt"
-
-func main() {
-
-	var f func(int, int) int = func(x, y int) int { return x + y }
-
-	v := func(x, y int) int { return x * y }
-
-	fmt.Println(f(3, 4))
-	fmt.Println(v(3, 4))
-}
-
-/*
 package main
 
 import "fmt"
@@ -27,13 +26,27 @@ const (
 )
 
 func (s Status) String() string {
-	return [...]string{"Pending", "Approved", "Rejected", "Cancelled"}[s]
+	names := []string{
+		"Pending",
+		"Approved",
+		"Rejected",
+		"Cancelled",
+	}
+	return names[s]
 }
+
+func processServerData(wrongData [...]string) { // Ошибка!
+	// Нельзя принимать [...] в параметрах
+}
+
+// ОШИБКА: не скомпилируется
 
 func main() {
-	var status Status = Approved
+	var status Status = 0
 	fmt.Println(status)      // "Approved"
 	fmt.Println(int(status)) // 1
-}
 
-*/
+	var v1 = [...]string{"Pending", "Approved", "Rejected", "Cancelled"}[2]
+
+	fmt.Println(v1) // 1
+}
