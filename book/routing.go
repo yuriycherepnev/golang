@@ -4,29 +4,31 @@ import (
 	"fmt"
 )
 
-func main() {
-	var n = struct {
-		Name string
-	}{
-		Name: "ivor",
-	}
-	fmt.Println(n)
-	//pr := newPathResolver()
-	//pr.Add("GET /hello", hello)
-	//pr.Add("* /goodbye/*", goodbye)
-	//http.ListenAndServe(":8080", pr)
-	//fmt.Println(n)
-}
-
-type User struct {
+type Person struct {
 	Name string
 	Age  int
 }
 
-func createUser() User {
-	return User{
-		Name: "Ivor",
-		Age:  26,
+func main() {
+	aloha := createAnyUser("user")
+
+	if num, ok := aloha.(Person); ok {
+		fmt.Println(num)
+	} else {
+		fmt.Println(num)
+	}
+}
+
+func createAnyUser(role string) interface{} {
+	if role == "admin" {
+		return 22
+	}
+	return struct {
+		Name string
+		Age  int
+	}{
+		Name: "Helen",
+		Age:  25,
 	}
 }
 
