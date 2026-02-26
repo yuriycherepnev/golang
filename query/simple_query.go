@@ -1,4 +1,3 @@
-// recovery
 package main
 
 import (
@@ -13,7 +12,28 @@ var (
 	ErrDb = errors.New("error db")
 )
 
+type FuckDB struct {
+}
+
+func (f FuckDB) Error() string {
+	return "fuck"
+}
+
 func main() {
+	partners, err := GetPartners()
+
+	if err != nil {
+		if errors.Is(err, ErrDb) {
+			fmt.Println("fuck u")
+			return
+		}
+		log.Fatal(err)
+	}
+	fmt.Println(partners)
+}
+
+func GetPartners() ([][]interface{}, error) {
+	fuckDb := FuckDB{}
 	dsn := "root:root@tcp(127.0.0.1:3307)/b2b"
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {
@@ -26,7 +46,7 @@ func main() {
 
 	query := `
 SELECT
-    partner.id partner_id,
+    partner.i partner_id,
     partner.title partner_title,
     sale_point.id sale_point_id,
     address.address store_address,
@@ -47,7 +67,8 @@ ORDER BY partner.id, sale_point.id;
 `
 	rows, err := db.Query(query)
 	if err != nil {
-		log.Println(err)
+		log.Printf("error while sql get partner : %w")
+		return nil, fmt.Errorf("error get partner: %w", fuckDb)
 	}
 	defer func() {
 		err := rows.Close()
@@ -62,6 +83,8 @@ ORDER BY partner.id, sale_point.id;
 	result := make([]interface{}, len(cols))
 	links := make([]interface{}, len(cols))
 
+	queryResult := make([][]interface{}, len(cols))
+
 	for i := range result {
 		links[i] = &result[i]
 	}
@@ -71,5 +94,7 @@ ORDER BY partner.id, sale_point.id;
 			fmt.Println(err)
 		}
 		fmt.Println(result...)
+		queryResult = append(queryResult, result)
 	}
+	return queryResult, nil
 }
