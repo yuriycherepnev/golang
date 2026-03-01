@@ -21,7 +21,6 @@ func (f FuckDB) Error() string {
 
 func main() {
 	partners, err := GetPartners()
-
 	if err != nil {
 		if errors.Is(err, ErrDb) {
 			fmt.Println("fuck u")
@@ -46,7 +45,7 @@ func GetPartners() ([][]interface{}, error) {
 
 	query := `
 SELECT
-    partner.i partner_id,
+    partner.id partner_id,
     partner.title partner_title,
     sale_point.id sale_point_id,
     address.address store_address,
