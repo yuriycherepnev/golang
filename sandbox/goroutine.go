@@ -1,18 +1,27 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func work(id int, wg *sync.WaitGroup) {
+
+	fmt.Printf("Горутина %d начала выполнение \n", id)
+	time.Sleep(2 * time.Second) // имитация долгой работы горутины
+	fmt.Printf("Горутина %d завершила выполнение \n", id)
+	wg.Done() // сигнализируем, что горутина завершила работу
+}
 
 func main() {
+	var wg sync.WaitGroup
+	wg.Add(2) // в группе две горутины
 
-	for i := 1; i < 7; i++ {
-		go func(n int) {
-			result := 0
-			for j := 1; j <= n; j++ {
-				result += j
-			}
-			fmt.Println(n, "-", result)
-		}(i)
-	}
-	fmt.Scanln() // ждем ввода пользователя
-	fmt.Println("The End")
+	// вызываем горутины
+	go work(1, &wg)
+	go work(2, &wg)
+
+	wg.Wait() // ожидаем завершения обоих горутин
+	fmt.Println("Горутины завершили выполнение")
 }
