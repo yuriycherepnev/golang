@@ -3,19 +3,23 @@ package main
 import "fmt"
 
 func main() {
-	x := make([]int, 3, 6)
+	a := "hello"
+	b := a[0:2]
+	fmt.Println(&a, a)
+	fmt.Println(&b, b)
 
-	fmt.Println(x)
-	a := append(x, 1, 2)
-	fmt.Println(x)
-	b := append(x, 4, 5)
-	fmt.Println(x)
+	a = "world"
+	fmt.Println(&a, a)
+	fmt.Println(&b, b)
 
-	//y := append(x, 3)
-	//z := append(x, 4)
-	//a := append(x, 5)
+	s := "hАllo"
 
-	fmt.Println(a)
-	fmt.Println(b)
-	//fmt.Println(z)
+	for _, v := range s {
+		fmt.Println(string(v))
+	}
+
+	for i := 0; i < len(s); i++ {
+		fmt.Println(s[i])
+	}
+
 }
