@@ -1,25 +1,11 @@
+// [0,0,1,1,1,2,2,3,3,4]
 package main
 
 import "fmt"
 
 func main() {
-	a := "hello"
-	b := a[0:2]
-	fmt.Println(&a, a)
-	fmt.Println(&b, b)
+	numbers := []int{0, 1, 2, 3, 4}
+	numbers = append(numbers[:1], numbers[2:]...)
 
-	a = "world"
-	fmt.Println(&a, a)
-	fmt.Println(&b, b)
-
-	s := "hАllo"
-
-	for _, v := range s {
-		fmt.Println(string(v))
-	}
-
-	for i := 0; i < len(s); i++ {
-		fmt.Println(s[i])
-	}
-
+	fmt.Println(numbers)
 }

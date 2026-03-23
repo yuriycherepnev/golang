@@ -1,4 +1,4 @@
-package bricks
+package main
 
 import "fmt"
 
