@@ -4,8 +4,7 @@ package main
 import "fmt"
 
 func main() {
-	numbers := []int{0, 1, 2, 3, 4}
-	numbers = append(numbers[:1], numbers[2:]...)
+	k := 17 % 5
 
-	fmt.Println(numbers)
+	fmt.Println(k)
 }
