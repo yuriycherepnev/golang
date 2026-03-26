@@ -1,10 +1,26 @@
-// [0,0,1,1,1,2,2,3,3,4]
 package main
 
 import "fmt"
 
 func main() {
-	k := 17 % 5
+	array := []int{1, 2, 3, 4, 5, 6, 7}
+	reverseArray(array, 4)
+	fmt.Println(array)
+}
 
-	fmt.Println(k)
+func reverseArray(nums []int, k int) {
+	length := len(nums)
+	k = k % length
+
+	reverse(nums, 0, length-1)
+	reverse(nums, 0, k-1)
+	reverse(nums, k, length-1)
+}
+
+func reverse(nums []int, start, end int) {
+	for start < end {
+		nums[start], nums[end] = nums[end], nums[start]
+		start++
+		end--
+	}
 }
