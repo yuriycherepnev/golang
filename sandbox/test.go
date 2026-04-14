@@ -3,9 +3,15 @@ package main
 import "fmt"
 
 func main() {
-	seen := make(map[int]bool)
-	seen[2] = true
+	seen1 := "123123"
+	seen2 := "фывячс"
+	fmt.Printf("%b\n", byte(1))
 
-	fmt.Println(8 << 1)
-	fmt.Println(9 << 1)
+	for i := 0; i < len(seen1); i++ {
+		fmt.Printf("%b\n", seen1[i])
+	}
+
+	for i := 0; i < len(seen2); i++ {
+		fmt.Printf("%b\n", seen2[i])
+	}
 }
