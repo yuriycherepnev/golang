@@ -1,15 +1,18 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	str := "ен hello"
+	str := "Строка"
 
-	for i := 0; i < len(str); i++ {
-		fmt.Println(str[i])
-	}
-	fmt.Println(len(str))
+	bytes := []byte(str)
+
+	fmt.Println(string(bytes))
+
+}
+
+func reverseString(s []byte) {
+
+	fmt.Println(s)
 
 }
