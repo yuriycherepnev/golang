@@ -3,7 +3,15 @@ package main
 import "fmt"
 
 func main() {
-	seen := -256*3 + 2
-	bt := byte(seen)
-	fmt.Println(bt)
+	// Создаем map и кладем несколько значений
+	myMap := make(map[string]int)
+	myMap["apple"] = 5
+	myMap["banana"] = 3
+	myMap["cherry"] = 8
+
+	array := []int{1, 2, 3, 4}
+
+	fmt.Printf("%#v\n", array)
+	// %b\n byte
+	// %c\n runes
 }
