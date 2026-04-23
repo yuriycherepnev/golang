@@ -10,8 +10,13 @@ func main() {
 	myMap["cherry"] = 8
 
 	array := []int{1, 2, 3, 4}
+	number := 944
 
+	fmt.Printf("%d\n", number)
+	// %b\n byte
+	// %c\n runes
 	fmt.Printf("%#v\n", array)
+
 	// %b\n byte
 	// %c\n runes
 }
