@@ -23,18 +23,6 @@ func getValue(wg *sync.WaitGroup, intChan chan int) {
 	for value := range intChan {
 		fmt.Println(value)
 	}
-
-	/*
-		for {
-			value, opened := <-intChan
-
-			fmt.Println(value)
-			if !opened {
-				break
-			}
-		}
-	*/
-
 	wg.Done()
 }
 
