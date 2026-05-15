@@ -20,15 +20,22 @@ func sendValue(wg *sync.WaitGroup, intChan chan int) {
 
 func getValue(wg *sync.WaitGroup, intChan chan int) {
 	// range автоматически читает значения до закрытия канала и выходит после
-	for value := range intChan {
-		fmt.Println(value)
+	//for value := range intChan {
+	//	fmt.Println(value)
+	//}
+
+	//работа с буферизованным каналом наглядно
+	for i := 0; i < 7; i++ {
+		value, opened := <-intChan
+		fmt.Println(value, opened)
 	}
+
 	wg.Done()
 }
 
 func main() {
 	wg := &sync.WaitGroup{}
-	intChan := make(chan int)
+	intChan := make(chan int, 5)
 
 	wg.Add(2)
 
