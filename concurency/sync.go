@@ -2,31 +2,41 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
 
-func sum(n int, done chan bool) {
+func sum(n int, done chan bool, mutex *sync.Mutex) {
 	result := 0
 
+	out := ""
 	for k := 1; k <= n; k++ {
 		result += k
 		if k == 1 {
-			fmt.Printf("%d", 1)
+			out = fmt.Sprintf("%d", 1)
 		} else if k <= n {
-			fmt.Printf(" + %d", k)
+			out += fmt.Sprintf(" + %d", k)
 		}
 	}
 
-	fmt.Printf(" = %d\n", result)
+	out += fmt.Sprintf(" = %d\n", result)
+
+	mutex.Lock()
+	fmt.Print(out)
+	mutex.Unlock()
+
 	done <- true
 }
 
 func main() {
 	done := make(chan bool)
+	mutex := &sync.Mutex{}
 
 	count := 10
 
 	for i := 1; i <= count; i++ {
-		go sum(i, done)
+		go sum(i, done, mutex)
 	}
 
 	for i := 1; i <= count; i++ {
