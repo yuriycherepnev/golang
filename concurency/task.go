@@ -6,6 +6,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"sync"
 	"time"
 )
 
@@ -18,6 +19,7 @@ func randomWait() int {
 }
 
 // решение через каналы
+/*
 func main() {
 	mainSeconds := 0
 	totalWorkSeconds := 0
@@ -42,9 +44,10 @@ func main() {
 	fmt.Println(mainSeconds)
 	fmt.Println(totalWorkSeconds)
 }
+*/
 
 // решение через mutex и waitGroup
-/*
+
 func main() {
 	mainSeconds := 0
 	totalWorkSeconds := 0
@@ -72,4 +75,3 @@ func main() {
 	fmt.Println(mainSeconds)
 	fmt.Println(totalWorkSeconds)
 }
-*/
